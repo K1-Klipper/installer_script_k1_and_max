@@ -12,6 +12,9 @@ case $choice in
 		sed -i 's/PY_SCRIPT=\/\usr\/share\/klipper\/klippy\/klippy.py/PY_SCRIPT=\/\usr\/data\/klipper\/klippy\/klippy.py/g' /etc/init.d/S55klipper_service
                 mv /usr/share/klipper /usr/share/old.klipper
 		ln -s /usr/data/klipper /usr/share/klipper
+  		cp /usr/data/printer_data/configs/printer.cfg /usr/data/printer_data/configs/printer.bak
+    		sed '/^[bl24c16f]$/,/^$/d' /usr/data/printer_data/configs/printer.cfg
+      		sed '/^square_corner_max_velocity: 200.0$/d' /usr/data/printer_data/configs/printer.cfg
 		/etc/init.d/S55klipper_service restart
                 ;;
             no|NO)
