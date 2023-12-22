@@ -8,9 +8,11 @@ case $choice in
         case $install_confirm in
             yes|YES)
                 echo "Downloading Klipper Repository"
-				git clone https://github.com/K1-Klipper/klipper.git /usr/data/klipper
-				sed -i 's/PY_SCRIPT=\/\usr\/share\/klipper\/klippy\/klippy.py/PY_SCRIPT=\/\usr\/data\/klipper\/klippy\/klippy.py/g' /etc/init.d/S55klipper_service
-                /etc/init.d/S55klipper_service restart
+		git clone https://github.com/K1-Klipper/klipper.git /usr/data/klipper
+		sed -i 's/PY_SCRIPT=\/\usr\/share\/klipper\/klippy\/klippy.py/PY_SCRIPT=\/\usr\/data\/klipper\/klippy\/klippy.py/g' /etc/init.d/S55klipper_service
+                mv /usr/share/klipper /usr/share/old.klipper
+		ln -s /usr/data/klipper /usr/share/klipper
+		/etc/init.d/S55klipper_service restart
                 ;;
             no|NO)
                 echo "Installation cancelled."
@@ -26,7 +28,9 @@ case $choice in
             yes|YES)
                 echo "Uninstalling..."
                 sed -i 's/PY_SCRIPT=\/\usr\/data\/klipper\/klippy\/klippy.py/PY_SCRIPT=\/\usr\/share\/klipper\/klippy\/klippy.py/g' /etc/init.d/S55KlipperService
-                ;;
+                rm /usr/share/klipper
+		mv /usr/share/old.klipper /usr/share/klipper
+		;;
             no|NO)
                 echo "Uninstallation cancelled."
                 ;;
