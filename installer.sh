@@ -1,3 +1,7 @@
+#!/bin/sh
+
+read -p "Do you want to install or uninstall? (install/uninstall) " choice
+
 case $choice in
     install|INSTALL)
         read -p "Are you sure you want to install? (yes/no) " install_confirm
