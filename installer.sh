@@ -11,7 +11,7 @@ case $choice in
 				git clone https://github.com/K1-Klipper/klipper.git /usr/data/klipper
 				sed -i 's/PROG=\/\usr\/share\/klippy-env\/bin\/python/PROG=\/\usr\/data\/klippy-env\/bin\/python/g' /etc/init.d/S55klipper_service
 				sed -i 's/PY_SCRIPT=\/\usr\/share\/klipper\/klippy\/klippy.py/PY_SCRIPT=\/\usr\/data\/klipper\/klippy\/klippy.py/g' /etc/init.d/S55klipper_service
-                ./etc/init.d/S55klipper_service restart
+                /etc/init.d/S55klipper_service restart
                 ;;
             no|NO)
                 echo "Installation cancelled."
