@@ -30,6 +30,7 @@ case $choice in
                 sed -i 's/PY_SCRIPT=\/\usr\/data\/klipper\/klippy\/klippy.py/PY_SCRIPT=\/\usr\/share\/klipper\/klippy\/klippy.py/g' /etc/init.d/S55KlipperService
                 rm /usr/share/klipper
 		mv /usr/share/old.klipper /usr/share/klipper
+		/etc/init.d/S55klipper_service restart
 		;;
             no|NO)
                 echo "Uninstallation cancelled."
