@@ -12,8 +12,20 @@ case $choice in
 		mv /usr/share/klipper /usr/share/old.klipper
 		ln -s /usr/data/klipper /usr/share/klipper
   		cp /usr/data/printer_data/configs/printer.cfg /usr/data/printer_data/configs/printer.bak
+		cp /usr/data/printer_data/configs/gcode_macro.cfg /usr/data/printer_data/config/gcode_macro.bak
     		sed '/^[bl24c16f]$/,/^$/d' /usr/data/printer_data/configs/printer.cfg
       		sed '/^square_corner_max_velocity: 200.0$/d' /usr/data/printer_data/configs/printer.cfg
+			sed '/\[include printer_params.cfg\]$/a\[include start_macro.cfg\]' /usr/data/printer_data/configs/printer.cfg
+			sed '/\[gcode_macro START_PRINT\]/,/CX_PRINT_DRAW_ONE_LINE/d' /usr/data/printer_data/config/gcode_macro.cfg
+			sed 's/CXSAVE_CONFIG/SAVE_CONFIG/g' /usr/data/printer_data/config/gcode_macro.cfg
+			file_to_check="/usr/data/printer_data/config/KAMP_settings.cfg"
+                if [ -f "$file_to_check" ]; then
+                    echo "Found KAMP installing start macro for KAMP"
+                    wget -P /usr/data/printer_data/config/start_macro.cfg https://github.com/K1-Klipper/installer_script_k1_and_max/raw/main/start_macro_KAMP.cfg 
+                else
+                    echo "KAMP not found. Installing normal start macro"
+                    wget -P /usr/data/printer_data/config/start_macro.cfg https://github.com/K1-Klipper/installer_script_k1_and_max/raw/main/start_macro.cfg
+                fi
 		/etc/init.d/S55klipper_service restart
                 ;;
             no|NO)
@@ -32,6 +44,7 @@ case $choice in
                 rm /usr/share/klipper
 		mv /usr/share/old.klipper /usr/share/klipper
   		mv /usr/data/printer_data/configs/printer.bak /usr/data/printer_data/configs/printer.cfg
+  		mv /usr/data/printer_data/configs/gcode_macro.bak /usr/data/printer_data/configs/gcode_macro.cfg
 		/etc/init.d/S55klipper_service restart
 		;;
             no|NO)
