@@ -44,8 +44,8 @@ case $choice in
                 echo "Uninstalling..."
                 rm /usr/share/klipper
 		mv /usr/share/old.klipper /usr/share/klipper
-  		mv /usr/data/printer_data/config/printer.bak /usr/data/printer_data/configs/printer.cfg
-  		mv /usr/data/printer_data/config/gcode_macro.bak /usr/data/printer_data/configs/gcode_macro.cfg
+  		mv /usr/data/printer_data/config/printer.bak /usr/data/printer_data/config/printer.cfg
+  		mv /usr/data/printer_data/config/gcode_macro.bak /usr/data/printer_data/config/gcode_macro.cfg
 		/etc/init.d/S55klipper_service restart
 		;;
             no|NO)
