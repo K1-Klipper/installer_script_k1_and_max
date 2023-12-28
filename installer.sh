@@ -11,7 +11,7 @@ case $choice in
 		git clone https://github.com/K1-Klipper/klipper.git /usr/data/klipper
 		mv /usr/share/klipper /usr/share/old.klipper
 		ln -s /usr/data/klipper /usr/share/klipper
-  		cp /usr/data/printer_data/config/printer.cfg /usr/data/printer_data/configs/printer.bak
+  		cp /usr/data/printer_data/config/printer.cfg /usr/data/printer_data/config/printer.bak
 		cp /usr/data/printer_data/config/gcode_macro.cfg /usr/data/printer_data/config/gcode_macro.bak
     		sed '/^[bl24c16f]$/,/^$/d' /usr/data/printer_data/config/printer.cfg
       		sed '/^square_corner_max_velocity: 200.0$/d' /usr/data/printer_data/config/printer.cfg
