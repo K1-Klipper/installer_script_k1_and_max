@@ -17,9 +17,9 @@ This is a community based effort to keep klipper up to date for the K1/Max
 ## Things to note:
 
 This installer will edit:
-1)Printer.cfg
-2)gcode_macro.cfg
-3)sensorless.cfg
+1)Printer.cfg <br>
+2)gcode_macro.cfg <br>
+3)sensorless.cfg <br>
 
 if you run into issues please download backups of those files from creality's github found here:
 https://github.com/CrealityOfficial/K1_Series_Klipper/tree/main/config
