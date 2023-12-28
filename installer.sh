@@ -13,6 +13,8 @@ case $choice in
 		ln -s /usr/data/klipper /usr/share/klipper
   		cp /usr/data/printer_data/config/printer.cfg /usr/data/printer_data/config/printer.bak
 		cp /usr/data/printer_data/config/gcode_macro.cfg /usr/data/printer_data/config/gcode_macro.bak
+		cp /usr/data/printer_data/config/sensorless.cfg /usr/data/printer_data/config/sensorless.bak
+		wget -P /usr/data/printer_data/config/ https://github.com/K1-Klipper/installer_script_k1_and_max/raw/main/sensorless.cfg
     		sed '/^[bl24c16f]$/,/^$/d' /usr/data/printer_data/config/printer.cfg
       		sed '/^square_corner_max_velocity: 200.0$/d' /usr/data/printer_data/config/printer.cfg
 			sed '/\[gcode_macro START_PRINT\]/,/CX_PRINT_DRAW_ONE_LINE/d' /usr/data/printer_data/config/gcode_macro.cfg
@@ -46,6 +48,7 @@ case $choice in
 		mv /usr/share/old.klipper /usr/share/klipper
   		mv /usr/data/printer_data/config/printer.bak /usr/data/printer_data/config/printer.cfg
   		mv /usr/data/printer_data/config/gcode_macro.bak /usr/data/printer_data/config/gcode_macro.cfg
+    		mv /usr/data/printer_data/config/sensorless.bak /usr/data/sensorsless.cfg
 		/etc/init.d/S55klipper_service restart
 		;;
             no|NO)
