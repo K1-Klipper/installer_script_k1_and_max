@@ -16,7 +16,7 @@ This is a community based effort to keep klipper up to date for the K1/Max
 
 ## Things to note:
 
-This installer will edit:
+This installer will edit: <br>
 1)Printer.cfg <br>
 2)gcode_macro.cfg <br>
 3)sensorless.cfg <br>
