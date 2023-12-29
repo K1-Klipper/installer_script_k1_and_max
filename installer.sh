@@ -9,7 +9,7 @@ case $choice in
             yes|YES)
                 echo "Downloading Klipper Repository"
 		git clone https://github.com/K1-Klipper/klipper.git /usr/data/klipper
-		mv /usr/share/klipper /usr/share/old.klipper
+		mv /usr/share/klipper /usr/data/old.klipper
 		ln -s /usr/data/klipper /usr/share/klipper
   		cp /usr/data/printer_data/config/printer.cfg /usr/data/printer_data/config/printer.bak
 		cp /usr/data/printer_data/config/gcode_macro.cfg /usr/data/printer_data/config/gcode_macro.bak
@@ -45,7 +45,7 @@ case $choice in
             yes|YES)
                 echo "Uninstalling..."
                 rm /usr/share/klipper
-		mv /usr/share/old.klipper /usr/share/klipper
+		mv /usr/data/old.klipper /usr/share/klipper
   		mv /usr/data/printer_data/config/printer.bak /usr/data/printer_data/config/printer.cfg
   		mv /usr/data/printer_data/config/gcode_macro.bak /usr/data/printer_data/config/gcode_macro.cfg
     		mv /usr/data/printer_data/config/sensorless.bak /usr/data/sensorsless.cfg
