@@ -13,7 +13,7 @@ case $choice in
 		ln -s /usr/data/klipper /usr/share/klipper
   		cp /usr/data/printer_data/config/printer.cfg /usr/data/printer_data/config/printer.bak
 		cp /usr/data/printer_data/config/gcode_macro.cfg /usr/data/printer_data/config/gcode_macro.bak
-		cp /usr/data/printer_data/config/sensorless.cfg /usr/data/printer_data/config/sensorless.bak
+		mv /usr/data/printer_data/config/sensorless.cfg /usr/data/printer_data/config/sensorless.bak
 		wget -P /usr/data/printer_data/config/ https://github.com/K1-Klipper/installer_script_k1_and_max/raw/main/sensorless.cfg
     		sed -n '/^[bl24c16f]$/,/^$/d' /usr/data/printer_data/config/printer.cfg
       		sed -n '/^square_corner_max_velocity: 200.0$/d' /usr/data/printer_data/config/printer.cfg
