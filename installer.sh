@@ -45,6 +45,7 @@ case $choice in
             yes|YES)
                 echo "Uninstalling..."
                 rm /usr/share/klipper
+		rm -rf /usr/data/klipper
 		mv /usr/data/old.klipper /usr/share/klipper
   		mv /usr/data/printer_data/config/printer.bak /usr/data/printer_data/config/printer.cfg
   		mv /usr/data/printer_data/config/gcode_macro.bak /usr/data/printer_data/config/gcode_macro.cfg
