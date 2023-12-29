@@ -15,10 +15,10 @@ case $choice in
 		cp /usr/data/printer_data/config/gcode_macro.cfg /usr/data/printer_data/config/gcode_macro.bak
 		mv /usr/data/printer_data/config/sensorless.cfg /usr/data/printer_data/config/sensorless.bak
 		wget -P /usr/data/printer_data/config/ https://github.com/K1-Klipper/installer_script_k1_and_max/raw/main/sensorless.cfg
-    		sed -in '/^[bl24c16f]$/,/^$/d' /usr/data/printer_data/config/printer.cfg
-      		sed -in '/^square_corner_max_velocity: 200.0$/d' /usr/data/printer_data/config/printer.cfg
-		sed -in '/\[gcode_macro START_PRINT\]/,/CX_PRINT_DRAW_ONE_LINE/d' /usr/data/printer_data/config/gcode_macro.cfg
-		sed -in 's/CXSAVE_CONFIG/SAVE_CONFIG/g' /usr/data/printer_data/config/gcode_macro.cfg
+    		sed -i '/^\[bl24c16f\]/,/^$/d' /usr/data/printer_data/config/printer.cfg
+      		sed -i '/^square_corner_max_velocity: 200.0$/d' /usr/data/printer_data/config/printer.cfg
+		sed -i '/\[gcode_macro START_PRINT\]/,/CX_PRINT_DRAW_ONE_LINE/d' /usr/data/printer_data/config/gcode_macro.cfg
+		sed -i 's/CXSAVE_CONFIG/SAVE_CONFIG/g' /usr/data/printer_data/config/gcode_macro.cfg
 		file_to_check="/usr/data/printer_data/config/KAMP_settings.cfg"
                 if [ -f "$file_to_check" ]; then
                     echo "Found KAMP installing start macro for KAMP"
