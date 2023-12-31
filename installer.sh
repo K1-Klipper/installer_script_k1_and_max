@@ -29,6 +29,7 @@ case $choice in
 		    sed -in '/\[include printer_params.cfg\]$/a\[include start_macro.cfg\]' /usr/data/printer_data/config/printer.cfg
                     wget -P /usr/data/printer_data/config/ https://github.com/K1-Klipper/installer_script_k1_and_max/raw/main/start_macro.cfg
                 fi
+		/usr/share/klippy-env/bin/python3 -m compileall /usr/data/klipper/klippy
 		/etc/init.d/S55klipper_service restart
                 ;;
             no|NO)
