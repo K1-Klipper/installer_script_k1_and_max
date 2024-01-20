@@ -8,13 +8,14 @@ case $choice in
         case $install_confirm in
             yes|YES)
                 echo "Downloading Klipper Repository"
+		git config --global http.sslVerify false
 		git clone https://github.com/K1-Klipper/klipper.git /usr/data/klipper
 		mv /usr/share/klipper /usr/data/old.klipper
 		ln -s /usr/data/klipper /usr/share/klipper
   		cp /usr/data/printer_data/config/printer.cfg /usr/data/printer_data/config/printer.bak
 		cp /usr/data/printer_data/config/gcode_macro.cfg /usr/data/printer_data/config/gcode_macro.bak
 		mv /usr/data/printer_data/config/sensorless.cfg /usr/data/printer_data/config/sensorless.bak
-		wget -P /usr/data/printer_data/config/ https://github.com/K1-Klipper/installer_script_k1_and_max/raw/main/sensorless.cfg
+		wget -P --no-check-certificate /usr/data/printer_data/config/ https://github.com/K1-Klipper/installer_script_k1_and_max/raw/main/sensorless.cfg
     		sed -i '/^\[bl24c16f\]/,/^$/d' /usr/data/printer_data/config/printer.cfg
       		sed -i '/^square_corner_max_velocity: 200.0$/d' /usr/data/printer_data/config/printer.cfg
 		sed -i '/\[gcode_macro START_PRINT\]/,/CX_PRINT_DRAW_ONE_LINE/d' /usr/data/printer_data/config/gcode_macro.cfg
@@ -23,11 +24,11 @@ case $choice in
                 if [ -f "$file_to_check" ]; then
                     echo "Found KAMP installing start macro for KAMP"
 		    sed -in '/\[include printer_params.cfg\]$/a\[include start_macro_KAMP.cfg\]' /usr/data/printer_data/config/printer.cfg
-                    wget -P /usr/data/printer_data/config/ https://github.com/K1-Klipper/installer_script_k1_and_max/raw/main/start_macro_KAMP.cfg 
+                    wget -P --no-check-certificate /usr/data/printer_data/config/ https://github.com/K1-Klipper/installer_script_k1_and_max/raw/main/start_macro_KAMP.cfg 
                 else
                     echo "KAMP not found. Installing normal start macro"
 		    sed -in '/\[include printer_params.cfg\]$/a\[include start_macro.cfg\]' /usr/data/printer_data/config/printer.cfg
-                    wget -P /usr/data/printer_data/config/ https://github.com/K1-Klipper/installer_script_k1_and_max/raw/main/start_macro.cfg
+                    wget -P --no-check-certificate /usr/data/printer_data/config/ https://github.com/K1-Klipper/installer_script_k1_and_max/raw/main/start_macro.cfg
                 fi
 		/usr/share/klippy-env/bin/python3 -m compileall /usr/data/klipper/klippy
 		/etc/init.d/S55klipper_service restart
