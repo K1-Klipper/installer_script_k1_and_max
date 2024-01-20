@@ -20,16 +20,8 @@ case $choice in
       		sed -i '/^square_corner_max_velocity: 200.0$/d' /usr/data/printer_data/config/printer.cfg
 		sed -i '/\[gcode_macro START_PRINT\]/,/CX_PRINT_DRAW_ONE_LINE/d' /usr/data/printer_data/config/gcode_macro.cfg
 		sed -i 's/CXSAVE_CONFIG/SAVE_CONFIG/g' /usr/data/printer_data/config/gcode_macro.cfg
-		file_to_check="/usr/data/printer_data/config/KAMP_settings.cfg"
-                if [ -f "$file_to_check" ]; then
-                    echo "Found KAMP installing start macro for KAMP"
-		    sed -in '/\[include printer_params.cfg\]$/a\[include start_macro_KAMP.cfg\]' /usr/data/printer_data/config/printer.cfg
-                    wget -P --no-check-certificate /usr/data/printer_data/config/ https://github.com/K1-Klipper/installer_script_k1_and_max/raw/main/start_macro_KAMP.cfg 
-                else
-                    echo "KAMP not found. Installing normal start macro"
-		    sed -in '/\[include printer_params.cfg\]$/a\[include start_macro.cfg\]' /usr/data/printer_data/config/printer.cfg
-                    wget -P --no-check-certificate /usr/data/printer_data/config/ https://github.com/K1-Klipper/installer_script_k1_and_max/raw/main/start_macro.cfg
-                fi
+		sed -in '/\[include printer_params.cfg\]$/a\[include start_macro_KAMP.cfg\]' /usr/data/printer_data/config/printer.cfg
+                wget -P --no-check-certificate /usr/data/printer_data/config/ https://github.com/K1-Klipper/installer_script_k1_and_max/raw/main/start_macro_KAMP.cfg 
 		/usr/share/klippy-env/bin/python3 -m compileall /usr/data/klipper/klippy
 		/etc/init.d/S55klipper_service restart
                 ;;
