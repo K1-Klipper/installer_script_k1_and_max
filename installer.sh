@@ -23,6 +23,8 @@ case $choice in
 		sed -in '/\[include printer_params.cfg\]$/a\[include start_macro_KAMP.cfg\]' /usr/data/printer_data/config/printer.cfg
                 wget -P --no-check-certificate /usr/data/printer_data/config/ https://raw.githubusercontent.com/K1-Klipper/installer_script_k1_and_max/main/start_macro.cfg 
 		/usr/share/klippy-env/bin/python3 -m compileall /usr/data/klipper/klippy
+  		mv /etc/init.d/S55klipper_service /usr/data/S55klipper_service.bak
+    		wget -P --no-check-certificate /etc/init.d/ https://raw.githubusercontent.com/K1-Klipper/installer_script_k1_and_max/main/S55klipper_service
 		/etc/init.d/S55klipper_service restart
                 ;;
             no|NO)
