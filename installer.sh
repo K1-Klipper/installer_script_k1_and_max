@@ -48,14 +48,7 @@ case $choice in
     		mv /usr/data/printer_data/config/sensorless.bak /usr/data/sensorsless.cfg
       		rm /etc/init.d/S55klipper_service
 		mv /usr/data/S55klipper_service.bak /etc/init.d/S55klipper_service
-     		file_to_check="/usr/data/printer_data/config/KAMP_settings.cfg"
-                if [ -f "$file_to_check" ]; then
-                    echo "Found KAMP uninstalling start macro for KAMP"
-		    rm /usr/data/printer_data/config/start_macro_KAMP.cfg
-                else
-                    echo "KAMP not found. uninstalling normal start macro"
-		    rm /usr/data/printer_data/config/start_macro.cfg
-                fi
+		rm /usr/data/printer_data/config/start_macro.cfg
 		/etc/init.d/S55klipper_service restart
 		;;
             no|NO)
