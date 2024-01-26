@@ -15,16 +15,16 @@ case $choice in
   		cp /usr/data/printer_data/config/printer.cfg /usr/data/printer_data/config/printer.bak
 		cp /usr/data/printer_data/config/gcode_macro.cfg /usr/data/printer_data/config/gcode_macro.bak
 		mv /usr/data/printer_data/config/sensorless.cfg /usr/data/printer_data/config/sensorless.bak
-		wget -P --no-check-certificate /usr/data/printer_data/config/ https://raw.githubusercontent.com/K1-Klipper/installer_script_k1_and_max/main/sensorless.cfg
+		wget --no-check-certificate -P /usr/data/printer_data/config/ https://raw.githubusercontent.com/K1-Klipper/installer_script_k1_and_max/main/sensorless.cfg
     		sed -i '/^\[bl24c16f\]/,/^$/d' /usr/data/printer_data/config/printer.cfg
       		sed -i '/^square_corner_max_velocity: 200.0$/d' /usr/data/printer_data/config/printer.cfg
 		sed -i '/\[gcode_macro START_PRINT\]/,/CX_PRINT_DRAW_ONE_LINE/d' /usr/data/printer_data/config/gcode_macro.cfg
 		sed -i 's/CXSAVE_CONFIG/SAVE_CONFIG/g' /usr/data/printer_data/config/gcode_macro.cfg
 		sed -in '/\[include printer_params.cfg\]$/a\[include start_macro_KAMP.cfg\]' /usr/data/printer_data/config/printer.cfg
-                wget -P --no-check-certificate /usr/data/printer_data/config/ https://raw.githubusercontent.com/K1-Klipper/installer_script_k1_and_max/main/start_macro.cfg 
+                wget --no-check-certificate -P /usr/data/printer_data/config/ https://raw.githubusercontent.com/K1-Klipper/installer_script_k1_and_max/main/start_macro.cfg 
 		/usr/share/klippy-env/bin/python3 -m compileall /usr/data/klipper/klippy
   		mv /etc/init.d/S55klipper_service /usr/data/S55klipper_service.bak
-    		wget -P --no-check-certificate /etc/init.d/ https://raw.githubusercontent.com/K1-Klipper/installer_script_k1_and_max/main/S55klipper_service
+    		wget --no-check-certificate -P /etc/init.d/ https://raw.githubusercontent.com/K1-Klipper/installer_script_k1_and_max/main/S55klipper_service
 		/etc/init.d/S55klipper_service restart
                 ;;
             no|NO)
