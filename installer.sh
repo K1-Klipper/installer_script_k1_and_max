@@ -27,6 +27,7 @@ case $choice in
     		wget --no-check-certificate -P /etc/init.d/ https://raw.githubusercontent.com/K1-Klipper/installer_script_k1_and_max/main/S55klipper_service
 		chmod +x /etc/init.d/S55klipper_service
 		/etc/init.d/S55klipper_service restart
+  		echo "Please reboot machine by using power switch on back to complete installation"
                 ;;
             no|NO)
                 echo "Installation cancelled."
