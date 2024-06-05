@@ -22,6 +22,7 @@ case $choice in
 		sed -i 's/CXSAVE_CONFIG/SAVE_CONFIG/g' /usr/data/printer_data/config/gcode_macro.cfg
 		sed -in '/\[include printer_params.cfg\]$/a\[include start_macro.cfg\]' /usr/data/printer_data/config/printer.cfg
                 wget --no-check-certificate -P /usr/data/printer_data/config/ https://raw.githubusercontent.com/K1-Klipper/installer_script_k1_and_max/main/start_macro.cfg 
+		wget --no-check-certificate -P /usr/data/klipper/klippy/extra/ https://raw.githubusercontent.com/Guilouz/Creality-Helper-Script/main/files/klipper-virtual-pins/virtual_pins.py
 		/usr/share/klippy-env/bin/python3 -m compileall /usr/data/klipper/klippy
   		mv /etc/init.d/S55klipper_service /usr/data/S55klipper_service.bak
     		wget --no-check-certificate -P /etc/init.d/ https://raw.githubusercontent.com/K1-Klipper/installer_script_k1_and_max/main/S55klipper_service
